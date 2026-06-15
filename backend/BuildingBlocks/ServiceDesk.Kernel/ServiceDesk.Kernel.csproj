@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>ServiceDesk.Kernel</RootNamespace>
+    <AssemblyName>ServiceDesk.Kernel</AssemblyName>
+  </PropertyGroup>
+
+</Project>

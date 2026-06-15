@@ -1,0 +1,27 @@
+## .NET build output
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+*.user
+*.suo
+.vs/
+
+## Rider / VS Code
+.idea/
+.vscode/
+
+## Local secrets / env
+*.env
+appsettings.*.local.json
+secrets.json
+
+## Test results
+TestResults/
+*.trx
+coverage*.xml
+
+## ETL migrator output
+tools/ServiceDesk.Migration/quarantine*.csv
+tools/ServiceDesk.Migration/migration-report*.txt

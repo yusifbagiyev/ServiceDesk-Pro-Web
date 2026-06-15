@@ -1,0 +1,30 @@
+<Solution>
+  <Folder Name="/backend/">
+    <Project Path="backend/ServiceDesk.Api/ServiceDesk.Api.csproj" />
+  </Folder>
+  <Folder Name="/backend/BuildingBlocks/">
+    <Project Path="backend/BuildingBlocks/ServiceDesk.Application.Abstractions/ServiceDesk.Application.Abstractions.csproj" />
+    <Project Path="backend/BuildingBlocks/ServiceDesk.Kernel/ServiceDesk.Kernel.csproj" />
+    <Project Path="backend/BuildingBlocks/ServiceDesk.SharedInfrastructure/ServiceDesk.SharedInfrastructure.csproj" />
+  </Folder>
+  <Folder Name="/backend/Modules/" />
+  <Folder Name="/backend/Modules/Catalog/">
+    <Project Path="backend/Modules/Catalog/ServiceDesk.Catalog.Api/ServiceDesk.Catalog.Api.csproj" />
+    <Project Path="backend/Modules/Catalog/ServiceDesk.Catalog.Application/ServiceDesk.Catalog.Application.csproj" />
+    <Project Path="backend/Modules/Catalog/ServiceDesk.Catalog.Domain/ServiceDesk.Catalog.Domain.csproj" />
+    <Project Path="backend/Modules/Catalog/ServiceDesk.Catalog.Infrastructure/ServiceDesk.Catalog.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/backend/Modules/Identity/">
+    <Project Path="backend/Modules/Identity/ServiceDesk.Identity.Api/ServiceDesk.Identity.Api.csproj" />
+    <Project Path="backend/Modules/Identity/ServiceDesk.Identity.Application/ServiceDesk.Identity.Application.csproj" />
+    <Project Path="backend/Modules/Identity/ServiceDesk.Identity.Domain/ServiceDesk.Identity.Domain.csproj" />
+    <Project Path="backend/Modules/Identity/ServiceDesk.Identity.Infrastructure/ServiceDesk.Identity.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/backend/Modules/Inventory/">
+    <Project Path="backend/Modules/Inventory/ServiceDesk.Inventory.Application.Contracts/ServiceDesk.Inventory.Application.Contracts.csproj" />
+    <Project Path="backend/Modules/Inventory/ServiceDesk.Inventory.Infrastructure/ServiceDesk.Inventory.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/backend/Modules/Tickets/">
+    <Project Path="backend/Modules/Tickets/ServiceDesk.Tickets.Domain/ServiceDesk.Tickets.Domain.csproj" />
+  </Folder>
+</Solution>

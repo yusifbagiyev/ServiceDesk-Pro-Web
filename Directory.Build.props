@@ -1,0 +1,27 @@
+<Project>
+
+  <!--
+    Solution-wide build settings for the ServiceDesk web backend.
+    Applies to every project under src\ (backend modules + tools).
+    The legacy desktop project lives outside src\ and is unaffected.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <Deterministic>true</Deterministic>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <!--
+      Audit the dependencies we directly choose (fails the build on a vulnerable direct package).
+      Deep build-time tooling transitives (e.g. EF Core Design -> System.Security.Cryptography.Xml,
+      which has an advisory with no patched version and is never shipped at runtime) are not gated.
+    -->
+    <NuGetAudit>true</NuGetAudit>
+    <NuGetAuditMode>direct</NuGetAuditMode>
+  </PropertyGroup>
+
+</Project>

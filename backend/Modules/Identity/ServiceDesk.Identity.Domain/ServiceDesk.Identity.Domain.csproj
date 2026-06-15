@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>ServiceDesk.Identity.Domain</RootNamespace>
+    <AssemblyName>ServiceDesk.Identity.Domain</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\ServiceDesk.Kernel\ServiceDesk.Kernel.csproj" />
+  </ItemGroup>
+
+</Project>
