@@ -22,6 +22,15 @@ public sealed partial class UsersController(ISender sender, ISessionStore sessio
     public async Task<IActionResult> Create([FromBody] CreateUserCommand command, CancellationToken cancellationToken) =>
         (await sender.Send(command, cancellationToken)).ToActionResult(this);
 
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update(
+        Guid id,
+        [FromBody] UpdateUserRequest request,
+        CancellationToken cancellationToken) =>
+        (await sender.Send(
+            new UpdateUserCommand(id, request.Email, request.FullName, request.PhoneNumber, request.WhatsAppOptIn),
+            cancellationToken)).ToActionResult(this);
+
     [HttpPost("{id:guid}/role")]
     public async Task<IActionResult> ChangeRole(
         Guid id,

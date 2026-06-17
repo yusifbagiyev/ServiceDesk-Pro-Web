@@ -18,3 +18,9 @@ public sealed record UserDeactivatedDomainEvent(Guid UserId, string FullName, Da
 public sealed record UserReactivatedDomainEvent(Guid UserId, string FullName, DateTime OccurredAtUtc) : IDomainEvent;
 
 public sealed record UserPasswordChangedDomainEvent(Guid UserId, string FullName, DateTime OccurredAtUtc) : IDomainEvent;
+
+public sealed record UserEmailChangedDomainEvent(
+    Guid UserId,
+    string FullName,
+    string NewEmail,
+    DateTime OccurredAtUtc) : IDomainEvent;

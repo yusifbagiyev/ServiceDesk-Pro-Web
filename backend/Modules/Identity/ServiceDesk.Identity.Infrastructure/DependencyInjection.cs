@@ -28,11 +28,14 @@ public static class DependencyInjection
             serviceProvider.GetRequiredService<IdentityDbContext>());
         services.AddScoped<IUserRepository, UserRepository>();
 
-        // Revoke a user's sessions when their role changes or they are deactivated.
+        // Revoke a user's sessions when their role changes, their email (login handle) changes,
+        // or they are deactivated.
         services
             .AddScoped<INotificationHandler<DomainEventNotification<UserRoleChangedDomainEvent>>, SessionRevocationHandler>();
         services
             .AddScoped<INotificationHandler<DomainEventNotification<UserDeactivatedDomainEvent>>, SessionRevocationHandler>();
+        services
+            .AddScoped<INotificationHandler<DomainEventNotification<UserEmailChangedDomainEvent>>, SessionRevocationHandler>();
 
         return services;
     }

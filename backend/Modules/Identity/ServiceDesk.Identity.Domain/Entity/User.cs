@@ -80,8 +80,15 @@ public sealed class User : AggregateRoot
 
     public void ChangeEmail(string email, DateTime nowUtc)
     {
-        Email = NormalizeEmail(email);
+        var normalized = NormalizeEmail(email);
+        if (Email == normalized)
+        {
+            return;
+        }
+
+        Email = normalized;
         Touch(nowUtc);
+        RaiseDomainEvent(new UserEmailChangedDomainEvent(Id, FullName, normalized, nowUtc));
     }
 
     public void ChangeRole(UserRole newRole, DateTime nowUtc)

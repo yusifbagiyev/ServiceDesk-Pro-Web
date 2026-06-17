@@ -53,8 +53,9 @@ public sealed class CsrfProtectionMiddleware(RequestDelegate next, CsrfProtectio
         return true;
     }
 
-    private bool IsAllowed(string origin) =>
-        options.AllowedOrigins.Count == 0 || options.AllowedOrigins.Contains(origin);
+    // Fail closed: with no configured allowlist, reject cookie-authenticated cross-site requests
+    // instead of silently disabling CSRF protection.
+    private bool IsAllowed(string origin) => options.AllowedOrigins.Contains(origin);
 }
 
 public static class CsrfProtectionMiddlewareExtensions

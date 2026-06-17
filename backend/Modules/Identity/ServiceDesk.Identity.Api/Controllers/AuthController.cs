@@ -75,6 +75,27 @@ public sealed partial class AuthController(ISender sender, ISessionStore session
         return NoContent();
     }
 
+    /// <summary>Keep the current session alive (slides its idle TTL); 401 if there is no live session.</summary>
+    [HttpPost("heartbeat")]
+    public async Task<IActionResult> Heartbeat(CancellationToken cancellationToken)
+    {
+        if (!Request.Cookies.TryGetValue(SessionConstants.CookieName, out var sessionId)
+            || string.IsNullOrEmpty(sessionId))
+        {
+            return Unauthorized();
+        }
+
+        var session = await sessionStore.GetAsync(sessionId, cancellationToken);
+        if (session is null)
+        {
+            return Unauthorized();
+        }
+
+        // Slide the cookie's MaxAge too, not just the Redis TTL, so an active client stays logged in.
+        SetSessionCookie(sessionId);
+        return NoContent();
+    }
+
     private void SetSessionCookie(string sessionId) =>
         Response.Cookies.Append(SessionConstants.CookieName, sessionId, new CookieOptions
         {

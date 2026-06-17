@@ -43,6 +43,14 @@ foreach (var origin in builder.Configuration.GetSection("Security:AllowedOrigins
     csrfProtectionOptions.AllowedOrigins.Add(origin);
 }
 
+// CSRF fails closed on an empty allowlist; outside Development that would 403 every cookie request,
+// so fail loud at boot (like the connection-string checks) instead of mysteriously at runtime.
+if (!builder.Environment.IsDevelopment() && csrfProtectionOptions.AllowedOrigins.Count == 0)
+{
+    throw new InvalidOperationException(
+        "Security:AllowedOrigins must be configured outside Development; CSRF protection fails closed on an empty allowlist.");
+}
+
 builder.Services.AddSingleton(csrfProtectionOptions);
 
 var app = builder.Build();
