@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ServiceDesk.Identity.Application.Commands;
+using ServiceDesk.Identity.Application.DTOs;
 using ServiceDesk.Identity.Application.Queries;
 using ServiceDesk.SharedInfrastructure.Authentication;
 using ServiceDesk.SharedInfrastructure.Authorization;
@@ -11,7 +12,7 @@ namespace ServiceDesk.Identity.Api.Controllers;
 [ApiController]
 [Route("api/users")]
 [RequirePermission(Permissions.UsersManage)]
-public sealed class UsersController(ISender sender, ISessionStore sessionStore) : ControllerBase
+public sealed partial class UsersController(ISender sender, ISessionStore sessionStore) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> List(CancellationToken cancellationToken) =>
@@ -43,8 +44,4 @@ public sealed class UsersController(ISender sender, ISessionStore sessionStore) 
         await sessionStore.RemoveAllForUserAsync(id, cancellationToken);
         return NoContent();
     }
-
-    public sealed record ChangeRoleRequest(string Role);
-
-    public sealed record SetActivationRequest(bool IsActive);
 }

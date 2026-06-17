@@ -24,7 +24,7 @@ internal sealed class ListUsersQueryHandler(IUserRepository users)
     {
         var all = await users.ListAsync(cancellationToken);
 
-        IReadOnlyList<UserListItem> items = all
+        IReadOnlyList<UserListItem> items = [.. all
             .Select(user => new UserListItem(
                 user.Id,
                 user.FullName,
@@ -32,8 +32,7 @@ internal sealed class ListUsersQueryHandler(IUserRepository users)
                 user.IsActive,
                 user.Email,
                 user.PhoneNumber,
-                user.Csat))
-            .ToList();
+                user.Csat))];
 
         return Result.Success(items);
     }

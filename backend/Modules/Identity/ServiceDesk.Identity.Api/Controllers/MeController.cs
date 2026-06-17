@@ -11,7 +11,7 @@ namespace ServiceDesk.Identity.Api.Controllers;
 [ApiController]
 [Route("api/me")]
 [Authorize]
-public sealed class MeController(ISender sender, ICurrentUser currentUser) : ControllerBase
+public sealed partial class MeController(ISender sender, ICurrentUser currentUser) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> Get(CancellationToken cancellationToken) =>
@@ -30,6 +30,4 @@ public sealed class MeController(ISender sender, ICurrentUser currentUser) : Con
         (await sender.Send(
             new UpdateUserContactCommand(currentUser.UserId, request.PhoneNumber, request.WhatsAppOptIn),
             cancellationToken)).ToActionResult(this);
-
-    public sealed record UpdateContactRequest(string? PhoneNumber, bool WhatsAppOptIn);
 }

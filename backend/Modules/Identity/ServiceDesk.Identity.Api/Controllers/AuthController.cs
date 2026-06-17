@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceDesk.Application.Abstractions.Time;
 using ServiceDesk.Identity.Application.Commands;
+using ServiceDesk.Identity.Application.DTOs;
 using ServiceDesk.SharedInfrastructure.Authentication;
 using ServiceDesk.SharedInfrastructure.Authorization;
 using ServiceDesk.SharedInfrastructure.Web;
@@ -11,7 +12,7 @@ namespace ServiceDesk.Identity.Api.Controllers;
 
 [ApiController]
 [Route("api/auth")]
-public sealed class AuthController(ISender sender, ISessionStore sessionStore, IDateTimeProvider clock) : ControllerBase
+public sealed partial class AuthController(ISender sender, ISessionStore sessionStore, IDateTimeProvider clock) : ControllerBase
 {
     /// <summary>Authenticate by email + password; on success starts a BFF session and sets the _sid cookie.</summary>
     [HttpPost("login")]
@@ -83,6 +84,4 @@ public sealed class AuthController(ISender sender, ISessionStore sessionStore, I
             Path = "/",
             MaxAge = SessionConstants.IdleTimeout,
         });
-
-    public sealed record LoginRequest(string Email, string Password);
 }
