@@ -25,7 +25,7 @@ namespace ServiceDesk.Catalog.Infrastructure.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ServiceDesk.Catalog.Domain.Category", b =>
+            modelBuilder.Entity("ServiceDesk.Catalog.Domain.Entity.Category", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid")

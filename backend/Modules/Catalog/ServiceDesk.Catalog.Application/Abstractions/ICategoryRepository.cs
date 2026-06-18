@@ -1,5 +1,4 @@
-using ServiceDesk.Application.Abstractions.Persistence;
-using ServiceDesk.Catalog.Domain;
+using ServiceDesk.Catalog.Domain.Entity;
 
 namespace ServiceDesk.Catalog.Application.Abstractions;
 
@@ -14,6 +13,3 @@ public interface ICategoryRepository
 
     void Add(Category category);
 }
-
-/// <summary>The Catalog module's unit of work (its DbContext), registered under this module-specific interface.</summary>
-public interface ICatalogUnitOfWork : IUnitOfWork;

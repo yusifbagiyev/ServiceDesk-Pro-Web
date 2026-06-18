@@ -2,10 +2,11 @@ using FluentValidation;
 using ServiceDesk.Application.Abstractions.Messaging;
 using ServiceDesk.Application.Abstractions.Time;
 using ServiceDesk.Catalog.Application.Abstractions;
-using ServiceDesk.Catalog.Domain;
+using ServiceDesk.Catalog.Domain.Entity;
+using ServiceDesk.Catalog.Domain.Exceptions;
 using ServiceDesk.Kernel.Results;
 
-namespace ServiceDesk.Catalog.Application.Categories;
+namespace ServiceDesk.Catalog.Application.Commands;
 
 public sealed record CreateCategoryCommand(string Name) : ICommand<Guid>;
 

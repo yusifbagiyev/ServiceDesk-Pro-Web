@@ -2,7 +2,7 @@ using ServiceDesk.Application.Abstractions.Messaging;
 using ServiceDesk.Catalog.Application.Abstractions;
 using ServiceDesk.Kernel.Results;
 
-namespace ServiceDesk.Catalog.Application.Categories;
+namespace ServiceDesk.Catalog.Application.Queries;
 
 public sealed record ListCategoriesQuery(bool ActiveOnly) : IQuery<IReadOnlyList<CategoryListItem>>;
 

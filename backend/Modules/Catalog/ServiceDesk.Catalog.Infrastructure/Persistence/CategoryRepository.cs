@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ServiceDesk.Catalog.Application.Abstractions;
-using ServiceDesk.Catalog.Domain;
+using ServiceDesk.Catalog.Domain.Entity;
 
 namespace ServiceDesk.Catalog.Infrastructure.Persistence;
 

@@ -1,7 +1,7 @@
 using ServiceDesk.Catalog.Domain.Events;
 using ServiceDesk.Kernel.Domain;
 
-namespace ServiceDesk.Catalog.Domain;
+namespace ServiceDesk.Catalog.Domain.Entity;
 
 /// <summary>
 /// A ticket issue/problem category (the legacy <c>Tasks</c> catalog, renamed). Referenced by

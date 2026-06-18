@@ -1,6 +1,6 @@
 using ServiceDesk.Kernel.Results;
 
-namespace ServiceDesk.Catalog.Domain;
+namespace ServiceDesk.Catalog.Domain.Exceptions;
 
 public static class CategoryErrors
 {

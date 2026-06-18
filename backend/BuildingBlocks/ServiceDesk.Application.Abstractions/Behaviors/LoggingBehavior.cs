@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using ServiceDesk.Kernel.Results;
@@ -19,13 +20,13 @@ public sealed class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior
         CancellationToken cancellationToken)
     {
         var requestName = typeof(TRequest).Name;
-        var startedAt = System.Diagnostics.Stopwatch.GetTimestamp();
+        var startedAt = Stopwatch.GetTimestamp();
 
         logger.LogInformation("Handling {RequestName}", requestName);
 
         TResponse response = await next(cancellationToken);
 
-        var elapsedMs = System.Diagnostics.Stopwatch.GetElapsedTime(startedAt).TotalMilliseconds;
+        var elapsedMs = Stopwatch.GetElapsedTime(startedAt).TotalMilliseconds;
 
         if (response.IsSuccess)
         {

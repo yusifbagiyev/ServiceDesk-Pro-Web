@@ -1,7 +1,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ServiceDesk.Catalog.Application.Categories;
+using ServiceDesk.Catalog.Application.Commands;
+using ServiceDesk.Catalog.Application.DTOs;
+using ServiceDesk.Catalog.Application.Queries;
 using ServiceDesk.SharedInfrastructure.Authorization;
 using ServiceDesk.SharedInfrastructure.Web;
 
@@ -39,8 +41,4 @@ public sealed class CategoriesController(ISender sender) : ControllerBase
         [FromBody] ActivationRequest request,
         CancellationToken cancellationToken) =>
         (await sender.Send(new SetCategoryActivationCommand(id, request.IsActive), cancellationToken)).ToActionResult(this);
-
-    public sealed record RenameRequest(string Name);
-
-    public sealed record ActivationRequest(bool IsActive);
 }

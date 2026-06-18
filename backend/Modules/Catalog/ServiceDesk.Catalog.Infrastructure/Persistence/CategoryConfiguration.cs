@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ServiceDesk.Catalog.Domain;
+using ServiceDesk.Catalog.Domain.Entity;
 
 namespace ServiceDesk.Catalog.Infrastructure.Persistence;
 
