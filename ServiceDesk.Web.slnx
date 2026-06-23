@@ -25,6 +25,7 @@
     <Project Path="backend/Modules/Inventory/ServiceDesk.Inventory.Infrastructure/ServiceDesk.Inventory.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/backend/Modules/Tickets/">
+    <Project Path="backend/Modules/Tickets/ServiceDesk.Tickets.Application/ServiceDesk.Tickets.Application.csproj" />
     <Project Path="backend/Modules/Tickets/ServiceDesk.Tickets.Domain/ServiceDesk.Tickets.Domain.csproj" />
   </Folder>
 </Solution>

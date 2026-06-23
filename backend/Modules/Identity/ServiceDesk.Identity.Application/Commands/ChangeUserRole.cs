@@ -17,7 +17,7 @@ public sealed class ChangeUserRoleCommandValidator : AbstractValidator<ChangeUse
         RuleFor(c => c.UserId).NotEmpty();
         RuleFor(c => c.Role)
             .Must(role => Enum.TryParse<UserRole>(role, ignoreCase: true, out _))
-            .WithMessage("Role must be one of: User, Admin.");
+            .WithMessage("Role must be one of: User, Worker, Admin.");
     }
 }
 
@@ -36,7 +36,8 @@ internal sealed class ChangeUserRoleCommandHandler(
 
         var newRole = Enum.Parse<UserRole>(command.Role, ignoreCase: true);
 
-        if (user.Role == UserRole.Admin && newRole == UserRole.User
+        // Demoting away from Admin (to User or Worker) must not remove the last administrator.
+        if (user.Role == UserRole.Admin && newRole != UserRole.Admin
             && await users.CountActiveAdminsAsync(cancellationToken) <= 1)
         {
             return UserErrors.CannotDemoteLastAdmin;

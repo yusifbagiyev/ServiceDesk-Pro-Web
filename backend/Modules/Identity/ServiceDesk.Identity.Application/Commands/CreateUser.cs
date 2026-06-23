@@ -26,7 +26,7 @@ public sealed class CreateUserCommandValidator : AbstractValidator<CreateUserCom
         RuleFor(c => c.Password).NotEmpty().MinimumLength(8).MaximumLength(128);
         RuleFor(c => c.Role)
             .Must(role => Enum.TryParse<UserRole>(role, ignoreCase: true, out _))
-            .WithMessage("Role must be one of: User, Admin.");
+            .WithMessage("Role must be one of: User, Worker, Admin.");
         RuleFor(c => c.PhoneNumber)
             .Matches(@"^\+?[1-9]\d{6,14}$")
             .When(c => !string.IsNullOrWhiteSpace(c.PhoneNumber))

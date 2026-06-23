@@ -22,12 +22,19 @@ public sealed class Ticket : AggregateRoot
     {
     }
 
-    private Ticket(Guid id, DateTime openedAtUtc, DateTime createdAtUtc, TicketPriority priority, Guid? createdByUserId)
+    private Ticket(
+        Guid id,
+        DateTime openedAtUtc,
+        DateTime createdAtUtc,
+        TicketPriority priority,
+        Guid? createdByUserId,
+        Guid? reporterUserId)
         : base(id)
     {
         OpenedAtUtc = openedAtUtc;
         Priority = priority;
         CreatedByUserId = createdByUserId;
+        ReporterUserId = reporterUserId;
         CreatedAtUtc = createdAtUtc;
     }
 
@@ -67,6 +74,12 @@ public sealed class Ticket : AggregateRoot
 
     public Guid? CreatedByUserId { get; private set; }
 
+    /// <summary>
+    /// The employee the ticket is FOR (the requester). Equals <see cref="CreatedByUserId"/> when a user
+    /// opens their own ticket; differs when a worker/admin opens it on behalf of an employee.
+    /// </summary>
+    public Guid? ReporterUserId { get; private set; }
+
     /// <summary>Original integer id from the legacy MSSQL <c>Ticket</c> table (ETL idempotency / traceability).</summary>
     public int? LegacyId { get; private set; }
 
@@ -90,13 +103,14 @@ public sealed class Ticket : AggregateRoot
         DateTime nowUtc,
         TicketPriority priority,
         Guid? createdByUserId,
+        Guid? reporterUserId,
         string? inventoryCode,
         string? departmentName,
         string? worker,
         string? deviceName,
         string? title)
     {
-        var ticket = new Ticket(NewId(), nowUtc, nowUtc, priority, createdByUserId)
+        var ticket = new Ticket(NewId(), nowUtc, nowUtc, priority, createdByUserId, reporterUserId)
         {
             InventoryCode = inventoryCode,
             DepartmentName = departmentName,
@@ -118,6 +132,7 @@ public sealed class Ticket : AggregateRoot
         DateTime nowUtc,
         TicketPriority priority,
         Guid? createdByUserId,
+        Guid? reporterUserId,
         string? inventoryCode,
         string? departmentName,
         string? worker,
@@ -125,7 +140,7 @@ public sealed class Ticket : AggregateRoot
         string? title,
         string solution)
     {
-        var ticket = new Ticket(NewId(), closedAtUtc, nowUtc, priority, createdByUserId)
+        var ticket = new Ticket(NewId(), closedAtUtc, nowUtc, priority, createdByUserId, reporterUserId)
         {
             InventoryCode = inventoryCode,
             DepartmentName = departmentName,
