@@ -13,6 +13,10 @@
     <ProjectReference Include="..\Modules\Catalog\ServiceDesk.Catalog.Application\ServiceDesk.Catalog.Application.csproj" />
     <ProjectReference Include="..\Modules\Catalog\ServiceDesk.Catalog.Infrastructure\ServiceDesk.Catalog.Infrastructure.csproj" />
     <ProjectReference Include="..\Modules\Catalog\ServiceDesk.Catalog.Api\ServiceDesk.Catalog.Api.csproj" />
+    <ProjectReference Include="..\Modules\Tickets\ServiceDesk.Tickets.Application\ServiceDesk.Tickets.Application.csproj" />
+    <ProjectReference Include="..\Modules\Tickets\ServiceDesk.Tickets.Infrastructure\ServiceDesk.Tickets.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modules\Tickets\ServiceDesk.Tickets.Api\ServiceDesk.Tickets.Api.csproj" />
+    <ProjectReference Include="..\Modules\Inventory\ServiceDesk.Inventory.Infrastructure\ServiceDesk.Inventory.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

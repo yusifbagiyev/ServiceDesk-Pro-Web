@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>ServiceDesk.Tickets.Application</RootNamespace>
+    <AssemblyName>ServiceDesk.Tickets.Application</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\ServiceDesk.Application.Abstractions\ServiceDesk.Application.Abstractions.csproj" />
+    <ProjectReference Include="..\ServiceDesk.Tickets.Domain\ServiceDesk.Tickets.Domain.csproj" />
+    <ProjectReference Include="..\..\Inventory\ServiceDesk.Inventory.Application.Contracts\ServiceDesk.Inventory.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+</Project>

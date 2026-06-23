@@ -22,4 +22,13 @@ public static class TicketErrors
 
     public static readonly Error AlreadyDeleted =
         Error.Conflict("Tickets.AlreadyDeleted", "The ticket has been deleted.");
+
+    public static Error CategoryNotFound(Guid id) =>
+        Error.Validation("Tickets.CategoryNotFound", $"Category '{id}' was not found or is inactive.");
+
+    public static Error UserNotFound(Guid id) =>
+        Error.Validation("Tickets.UserNotFound", $"User '{id}' was not found or is inactive.");
+
+    public static Error SlaPolicyNotFound(Guid id) =>
+        Error.NotFound("Tickets.SlaPolicyNotFound", $"SLA policy '{id}' was not found.");
 }
